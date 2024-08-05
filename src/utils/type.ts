@@ -83,3 +83,17 @@ export interface Ticket {
     seatNumber: number;
   };
 }
+
+export interface DeployPlayDetail {
+  name: string;
+  image: string;
+  cast: string;
+  description: string;
+  venue: string;
+  seatsAndPrices: string;
+  eventTime: Date;
+  startDate: Date;
+  endDate: Date;
+  bookingStartDate: Date;
+  bookingEndDate: Date;
+}

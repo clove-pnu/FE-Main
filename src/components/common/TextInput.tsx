@@ -14,23 +14,23 @@ export default function TextInput({
   secret = false,
 }: TextInputProps) {
   return (
-    <div className="flex flex-row items-center gap-2 border-b-2 border-black py-2">
+    <div className="border-b-2 border-black py-2">
       <label
-        className="px-2 font-bold"
+        className="flex flex-row items-center gap-4 px-2 font-bold"
         htmlFor={name}
       >
         {name}
+        <input
+          className="grow px-2 py-1 focus:outline-none"
+          type={secret ? 'password' : 'text'}
+          name={name}
+          id={name}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          aria-required={required}
+          aria-label={`${name} 입력`}
+        />
       </label>
-      <input
-        className="grow px-2 py-1 focus:outline-none"
-        type={secret ? 'password' : 'text'}
-        name={name}
-        id={name}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        aria-required={required}
-        aria-label={`${name} 입력`}
-      />
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import { Link, Outlet } from 'react-router-dom';
-import UserStatusBar from '../../auth/UserStatusBar';
 import SearchBar from '../SearchBar';
 
 export default function MainLayout() {
@@ -14,7 +13,6 @@ export default function MainLayout() {
             <SearchBar />
           </div>
         </div>
-        <UserStatusBar />
       </div>
       <Outlet />
     </div>
