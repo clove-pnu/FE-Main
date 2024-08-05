@@ -1,6 +1,6 @@
-import PlayList from '../../components/common/PlayList';
-import Ticketing from '../../components/ticket/Ticketing';
-import { Play } from '../../utils/type';
+import PlayList from '../components/PlayList';
+import { Play } from '../utils/type';
+import styles from './styles/MainPage.module.css';
 
 const PlayListMockData: Play[] = [
   {
@@ -40,7 +40,7 @@ const PlayListMockData: Play[] = [
 export default function MainPage() {
   return (
     <main>
-      <div className="p-4">
+      <div className={styles.container}>
         <PlayList PlayCards={PlayListMockData} />
       </div>
     </main>

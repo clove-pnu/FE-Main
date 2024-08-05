@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from 'auth/useAuth';
 import { lazy, Suspense } from 'react';
-import MainPage from './pages/common/MainPage';
-import MainLayout from './components/common/Layout/MainLayout';
+import MainPage from './pages/MainPage';
+import MainLayout from './components/Layout/MainLayout';
 
 const LoginPage = lazy(() => import('auth/LoginPage'));
 const SignupPage = lazy(() => import('auth/SignupPage'));
@@ -46,9 +46,14 @@ export default function App() {
               </Suspense>
 )}
           />
-          <Route path="/signup" element={<Suspense fallback={<div>Loading...</div>}>
+          <Route
+            path="/signup"
+            element={(
+              <Suspense fallback={<div>Loading...</div>}>
                 <SignupPage />
-              </Suspense>} />
+              </Suspense>
+)}
+          />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

@@ -1,5 +1,6 @@
-import { Play } from '../../utils/type';
+import { Play } from '../utils/type';
 import PlayCard from './PlayCard';
+import styles from './styles/PlayList.module.css';
 
 interface PlayListProps {
   PlayCards: Play[];
@@ -7,7 +8,7 @@ interface PlayListProps {
 
 export default function PlayList({ PlayCards }: PlayListProps) {
   return (
-    <ul className="flex flex-wrap gap-16">
+    <ul className={styles.container}>
       {PlayCards.map(({
         pid,
         thumbnailUrl,
