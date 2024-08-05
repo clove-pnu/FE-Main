@@ -8,9 +8,10 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: 'auto',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.tsx', '.js', 'css'],
   },
   module: {
     rules: [
@@ -21,7 +22,25 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                namedExport: false,
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
       },
     ],
   },
@@ -31,18 +50,24 @@ module.exports = {
       template: './public/index.html',
     }),
     new ModuleFederationPlugin({
-      name: 'hostApp',
+      name: 'main',
       remotes: {
-        remoteApp: 'remoteApp@http://localhost:3001/remoteEntry.js',
+        auth: 'auth@http://localhost:3001/remoteEntry.js',
       },
-      shared: ['react', 'react-dom'],
+      shared: ['react', 'react-dom', 'react-router-dom'],
     }),
   ],
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
-    compress: true,
+    static: [
+      {
+        directory: path.join(__dirname, 'public'),
+      },
+      {
+        directory: path.join(__dirname, 'dist'),
+      },
+    ],
+    compress: false,
     port: 3000,
+    historyApiFallback: true,
   },
 };
