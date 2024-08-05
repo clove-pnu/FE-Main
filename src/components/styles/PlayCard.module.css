@@ -1,0 +1,31 @@
+.link {
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  color: black;
+}
+
+.imageContainer {
+  background-color: var(--color-blue);
+  height: 20rem;
+  width: 15rem;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.66rem;
+  padding: 1rem 0.5rem;
+}
+
+.title {
+  font-size: 1.33rem;
+  font-weight: 700;
+}
+
+.date {
+  color: #00000080;
+}
