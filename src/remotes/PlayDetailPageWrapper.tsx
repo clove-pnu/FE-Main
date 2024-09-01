@@ -6,9 +6,9 @@ interface State {
   hasError: boolean;
 }
 
-const LoginPage = lazy(() => import('auth/LoginPage'));
+const PlayDetailPage = lazy(() => import('deploy/PlayDetailPage'));
 
-class LoginPageWrapper extends Component<any, State> {
+class PlayDetailPageWrapper extends Component<any, State> {
   constructor(props: any) {
     super(props);
     this.state = { hasError: false };
@@ -31,10 +31,10 @@ class LoginPageWrapper extends Component<any, State> {
 
     return (
       <Suspense fallback={<div>Loading...</div>}>
-        <LoginPage />
+        <PlayDetailPage />
       </Suspense>
     );
   }
 }
 
-export default LoginPageWrapper;
+export default PlayDetailPageWrapper;

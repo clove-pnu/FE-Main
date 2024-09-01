@@ -24,7 +24,7 @@ class SignupPageWrapper extends Component<any, State> {
     if (hasError) {
       return (
         <div>
-          로그인 서버에 오류가 발생했습니다. 잠시 후 시도해주세요.
+          오류가 발생했습니다. 잠시 후 시도해주세요.
         </div>
       );
     }
