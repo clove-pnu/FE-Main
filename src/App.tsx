@@ -1,15 +1,17 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AuthProvider } from 'auth/useAuth';
-import { lazy, Suspense } from 'react';
 import MainPage from './pages/MainPage';
+import AuthProviderWrapper from './remotes/AuthProviderWrapper';
 import MainLayout from './components/Layout/MainLayout';
-
-const LoginPage = lazy(() => import('auth/LoginPage'));
-const SignupPage = lazy(() => import('auth/SignupPage'));
+import PrivateRouteWrapper from './remotes/PrivateRouteWrapper';
+import LoginPageWrapper from './remotes/LoginPageWrapper';
+import SignupPageWrapper from './remotes/SignupPageWrapper';
+import OwnerPageWrapper from './remotes/OwnerPageWrapper';
+import TemplatePageWrapper from './remotes/TemplatePageWrapper';
+import PlayDetailPageWrapper from './remotes/PlayDetailPageWrapper';
 
 export default function App() {
   return (
-    <AuthProvider>
+    <AuthProviderWrapper>
       <BrowserRouter basename="/">
         <Routes>
           <Route element={<MainLayout />}>
@@ -17,10 +19,22 @@ export default function App() {
             {/* <Route path="/play/:pid" element={<PlayDetailTicketingPage />} /> */}
 
             {/* Need Authentication */}
-            <Route element={<div>auth</div>}>
+            <Route element={<PrivateRouteWrapper />}>
               {/* Deployment */}
-              {/* <Route path="/owner" element={<OwnerPage />} />
-              <Route path="/owner/deploy" element={<TemplatePage />} /> */}
+              <Route
+                path="/test"
+                element={(
+                  <div>This is Private Page!</div>
+                )}
+              />
+              <Route
+                path="/owner"
+                element={<OwnerPageWrapper />}
+              />
+              <Route
+                path="/owner/deploy"
+                element={<TemplatePageWrapper />}
+              />
 
               {/* Deployment Template */}
               {/* <Route path="/owner/deploy/concert" element={<ConcertDeployPage />} />
@@ -28,8 +42,11 @@ export default function App() {
               <Route path="/owner/deploy/exhibition" element={<ConcertDeployPage />} /> */}
 
               {/* Play Detail (seller) */}
-              {/* <Route path="/owner/playDetail/:pid" element={<PlayDetailPage />} />
-              <Route path="/owner/playMonitor/:pid" element={<PlayMonitorPage />} />
+              <Route
+                path="/owner/playDetail/:pid"
+                element={<PlayDetailPageWrapper />}
+              />
+              {/* <Route path="/owner/playMonitor/:pid" element={<PlayMonitorPage />} />
               <Route path="/owner/serverMonitor/:pid" element={<ServerMonitorPage />} />
               <Route path="/owner/playConfiguration/:pid" element={<PlayConfigurationPage />} /> */}
 
@@ -40,22 +57,14 @@ export default function App() {
           {/* Authentication */}
           <Route
             path="/login"
-            element={(
-              <Suspense fallback={<div>Loading...</div>}>
-                <LoginPage />
-              </Suspense>
-)}
+            element={<LoginPageWrapper />}
           />
           <Route
             path="/signup"
-            element={(
-              <Suspense fallback={<div>Loading...</div>}>
-                <SignupPage />
-              </Suspense>
-)}
+            element={<SignupPageWrapper />}
           />
         </Routes>
       </BrowserRouter>
-    </AuthProvider>
+    </AuthProviderWrapper>
   );
 }
