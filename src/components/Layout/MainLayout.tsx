@@ -1,9 +1,7 @@
 import { Link, Outlet } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
 import SearchBar from '../SearchBar';
 import styles from '../styles/MainLayout.module.css';
-
-const UserStatusBar = lazy(() => import('auth/UserStatusBar'));
+import UserStatusBarWrapper from '../../remotes/UserStatusBarWrapper';
 
 export default function MainLayout() {
   return (
@@ -17,9 +15,7 @@ export default function MainLayout() {
             <SearchBar />
           </div>
         </div>
-        <Suspense fallback={<div>Loading...</div>}>
-          <UserStatusBar />
-        </Suspense>
+        <UserStatusBarWrapper />
       </div>
       <Outlet />
     </div>

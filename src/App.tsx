@@ -1,61 +1,87 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AuthProvider } from 'auth/useAuth';
 import { lazy, Suspense } from 'react';
 import MainPage from './pages/MainPage';
+import AuthProviderWrapper from './remotes/AuthProviderWrapper';
 import MainLayout from './components/Layout/MainLayout';
+import PrivateRouteWrapper from './remotes/PrivateRouteWrapper';
+import LoginPageWrapper from './remotes/LoginPageWrapper';
+import SignupPageWrapper from './remotes/SignupPageWrapper';
 
-const LoginPage = lazy(() => import('auth/LoginPage'));
-const SignupPage = lazy(() => import('auth/SignupPage'));
+// Deploy
+const OwnerPage = lazy(() => import('deploy/OwnerPage'));
+const PlayDetailPage = lazy(() => import('deploy/PlayDetailPage'));
+const TemplatePage = lazy(() => import('deploy/TemplatePage'));
 
 export default function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter basename="/">
-        <Routes>
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<MainPage />} />
-            {/* <Route path="/play/:pid" element={<PlayDetailTicketingPage />} /> */}
+    <AuthProviderWrapper>
+      <Suspense fallback={<div>Loading...</div>}>
+        <BrowserRouter basename="/">
+          <Routes>
+            <Route element={<MainLayout />}>
+              <Route path="/" element={<MainPage />} />
+              {/* <Route path="/play/:pid" element={<PlayDetailTicketingPage />} /> */}
 
-            {/* Need Authentication */}
-            <Route element={<div>auth</div>}>
-              {/* Deployment */}
-              {/* <Route path="/owner" element={<OwnerPage />} />
-              <Route path="/owner/deploy" element={<TemplatePage />} /> */}
+              {/* Need Authentication */}
+              <Route element={<PrivateRouteWrapper />}>
+                {/* Deployment */}
+                <Route
+                  path="/test"
+                  element={(
+                    <div>This is Private Page!</div>
+                )}
+                />
+                <Route
+                  path="/owner"
+                  element={(
+                    <Suspense fallback={<div>Loading...</div>}>
+                      <OwnerPage />
+                    </Suspense>
+)}
+                />
+                <Route
+                  path="/owner/deploy"
+                  element={(
+                    <Suspense fallback={<div>Loading...</div>}>
+                      <TemplatePage />
+                    </Suspense>
+)}
+                />
 
-              {/* Deployment Template */}
-              {/* <Route path="/owner/deploy/concert" element={<ConcertDeployPage />} />
+                {/* Deployment Template */}
+                {/* <Route path="/owner/deploy/concert" element={<ConcertDeployPage />} />
               <Route path="/owner/deploy/sports" element={<ConcertDeployPage />} />
               <Route path="/owner/deploy/exhibition" element={<ConcertDeployPage />} /> */}
 
-              {/* Play Detail (seller) */}
-              {/* <Route path="/owner/playDetail/:pid" element={<PlayDetailPage />} />
-              <Route path="/owner/playMonitor/:pid" element={<PlayMonitorPage />} />
+                {/* Play Detail (seller) */}
+                <Route
+                  path="/owner/playDetail/:pid"
+                  element={(
+                    <Suspense fallback={<div>Loading...</div>}>
+                      <PlayDetailPage />
+                    </Suspense>
+)}
+                />
+                {/* <Route path="/owner/playMonitor/:pid" element={<PlayMonitorPage />} />
               <Route path="/owner/serverMonitor/:pid" element={<ServerMonitorPage />} />
               <Route path="/owner/playConfiguration/:pid" element={<PlayConfigurationPage />} /> */}
 
-              {/* Play Ticketing */}
-              {/* <Route path="/play/:pid/ticketing" element={<PlayTicketingPage />} /> */}
+                {/* Play Ticketing */}
+                {/* <Route path="/play/:pid/ticketing" element={<PlayTicketingPage />} /> */}
+              </Route>
             </Route>
-          </Route>
-          {/* Authentication */}
-          <Route
-            path="/login"
-            element={(
-              <Suspense fallback={<div>Loading...</div>}>
-                <LoginPage />
-              </Suspense>
-)}
-          />
-          <Route
-            path="/signup"
-            element={(
-              <Suspense fallback={<div>Loading...</div>}>
-                <SignupPage />
-              </Suspense>
-)}
-          />
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+            {/* Authentication */}
+            <Route
+              path="/login"
+              element={<LoginPageWrapper />}
+            />
+            <Route
+              path="/signup"
+              element={<SignupPageWrapper />}
+            />
+          </Routes>
+        </BrowserRouter>
+      </Suspense>
+    </AuthProviderWrapper>
   );
 }

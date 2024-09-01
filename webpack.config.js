@@ -11,7 +11,7 @@ module.exports = {
     publicPath: 'auto',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', 'css'],
+    extensions: ['.ts', '.tsx', '.js', '.css'],
   },
   module: {
     rules: [
@@ -53,8 +53,9 @@ module.exports = {
       name: 'main',
       remotes: {
         auth: 'auth@http://localhost:3001/remoteEntry.js',
+        deploy: 'deploy@http://localhost:3002/remoteEntry.js',
       },
-      shared: ['react', 'react-dom', 'react-router-dom'],
+      shared: ['react', 'react-dom', 'react-router-dom', 'axios'],
     }),
   ],
   devServer: {

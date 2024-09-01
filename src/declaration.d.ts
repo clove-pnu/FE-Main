@@ -3,8 +3,14 @@ declare module '*.module.css' {
   export default classes;
 }
 
+// Auth
 declare module 'auth/LoginPage';
 declare module 'auth/SignupPage';
-declare module 'auth/useAuth';
+declare module 'auth/AuthProvider';
 declare module 'auth/UserStatusBar';
 declare module 'auth/PrivateRoute';
+
+// Deploy
+declare module 'deploy/OwnerPage';
+declare module 'deploy/PlayDetailPage';
+declare module 'deploy/TemplatePage';
