@@ -12,7 +12,7 @@ import PlayDetailPageWrapper from './remotes/PlayDetailPageWrapper';
 export default function App() {
   return (
     <AuthProviderWrapper>
-      <BrowserRouter basename="/">
+      <BrowserRouter basename="/page/main">
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<MainPage />} />

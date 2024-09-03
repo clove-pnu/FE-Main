@@ -8,7 +8,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath: '/page/main/',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.css'],
@@ -60,9 +60,6 @@ module.exports = {
   ],
   devServer: {
     static: [
-      {
-        directory: path.join(__dirname, 'public'),
-      },
       {
         directory: path.join(__dirname, 'dist'),
       },
