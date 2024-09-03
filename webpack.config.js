@@ -52,8 +52,8 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'main',
       remotes: {
-        auth: 'auth@http://localhost:3001/remoteEntry.js',
-        deploy: 'deploy@http://localhost:3002/remoteEntry.js',
+        auth: 'auth@http://34.47.117.26/page/auth/remoteEntry.js',
+        deploy: 'deploy@http://34.47.117.26/page/deploy/remoteEntry.js',
       },
       shared: ['react', 'react-dom', 'react-router-dom', 'axios'],
     }),
