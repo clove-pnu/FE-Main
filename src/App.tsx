@@ -8,11 +8,15 @@ import SignupPageWrapper from './remotes/SignupPageWrapper';
 import OwnerPageWrapper from './remotes/OwnerPageWrapper';
 import TemplatePageWrapper from './remotes/TemplatePageWrapper';
 import PlayDetailPageWrapper from './remotes/PlayDetailPageWrapper';
+import DeployConcertPageWrapper from './remotes/DeployConcertPageWrapper';
+import ServerMonitorPageWrapper from './remotes/ServerMonitorPageWrapper';
 
 export default function App() {
   return (
     <AuthProviderWrapper>
-      <BrowserRouter basename="/page/main">
+      <BrowserRouter basename="/">
+        {/* When Build */}
+        {/* <BrowserRouter basename="/page/main"> */}
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<MainPage />} />
@@ -21,12 +25,6 @@ export default function App() {
             {/* Need Authentication */}
             <Route element={<PrivateRouteWrapper />}>
               {/* Deployment */}
-              <Route
-                path="/test"
-                element={(
-                  <div>This is Private Page!</div>
-                )}
-              />
               <Route
                 path="/owner"
                 element={<OwnerPageWrapper />}
@@ -37,8 +35,8 @@ export default function App() {
               />
 
               {/* Deployment Template */}
-              {/* <Route path="/owner/deploy/concert" element={<ConcertDeployPage />} />
-              <Route path="/owner/deploy/sports" element={<ConcertDeployPage />} />
+              <Route path="/owner/deploy/concert" element={<DeployConcertPageWrapper />} />
+              {/* <Route path="/owner/deploy/sports" element={<ConcertDeployPage />} />
               <Route path="/owner/deploy/exhibition" element={<ConcertDeployPage />} /> */}
 
               {/* Play Detail (seller) */}
@@ -46,9 +44,12 @@ export default function App() {
                 path="/owner/playDetail/:pid"
                 element={<PlayDetailPageWrapper />}
               />
-              {/* <Route path="/owner/playMonitor/:pid" element={<PlayMonitorPage />} />
-              <Route path="/owner/serverMonitor/:pid" element={<ServerMonitorPage />} />
-              <Route path="/owner/playConfiguration/:pid" element={<PlayConfigurationPage />} /> */}
+              {/* <Route path="/owner/playMonitor/:pid" element={<PlayMonitorPageWrapper />} /> */}
+              <Route path="/owner/serverMonitor/:pid" element={<ServerMonitorPageWrapper />} />
+              {/* <Route
+                path="/owner/playConfiguration/:pid"
+                element={<PlayConfigurationPage />}
+              /> */}
 
               {/* Play Ticketing */}
               {/* <Route path="/play/:pid/ticketing" element={<PlayTicketingPage />} /> */}
