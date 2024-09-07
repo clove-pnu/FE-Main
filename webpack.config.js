@@ -8,7 +8,9 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/page/main/',
+    publicPath: '/',
+    // When Build
+    // publicPath: '/page/main/',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.css'],
@@ -52,8 +54,11 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'main',
       remotes: {
-        auth: 'auth@http://34.47.117.26/page/auth/remoteEntry.js',
-        deploy: 'deploy@http://34.47.117.26/page/deploy/remoteEntry.js',
+        auth: 'auth@http://localhost:3001/remoteEntry.js',
+        deploy: 'deploy@http://localhost:3002/remoteEntry.js',
+        // When build
+        // auth: 'auth@http://34.47.117.26/page/auth/remoteEntry.js',
+        // deploy: 'deploy@http://34.47.117.26/page/deploy/remoteEntry.js',
       },
       shared: ['react', 'react-dom', 'react-router-dom', 'axios'],
     }),
@@ -67,5 +72,15 @@ module.exports = {
     compress: false,
     port: 3000,
     historyApiFallback: true,
+    proxy: [
+      {
+        context: ['/auth'],
+        target: 'http://34.47.117.26',
+      },
+      {
+        context: ['/deploy'],
+        target: 'http://34.47.117.26',
+      },
+    ],
   },
 };
