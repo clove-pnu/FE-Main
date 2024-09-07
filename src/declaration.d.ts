@@ -14,3 +14,5 @@ declare module 'auth/PrivateRoute';
 declare module 'deploy/OwnerPage';
 declare module 'deploy/PlayDetailPage';
 declare module 'deploy/TemplatePage';
+declare module 'deploy/DeployConcertPage';
+declare module 'deploy/ServerMonitorPage';
