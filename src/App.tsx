@@ -14,9 +14,7 @@ import ServerMonitorPageWrapper from './remotes/ServerMonitorPageWrapper';
 export default function App() {
   return (
     <AuthProviderWrapper>
-      <BrowserRouter basename="/">
-        {/* When Build */}
-        {/* <BrowserRouter basename="/page/main"> */}
+      <BrowserRouter basename={process.env.ROUTER_BASENAME}>
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<MainPage />} />
