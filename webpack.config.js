@@ -2,7 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
-const Dotenv = require('dotenv-webpack');
 
 module.exports = (_, argv) => {
   const isProduction = argv.mode === 'production';
@@ -12,7 +11,7 @@ module.exports = (_, argv) => {
     output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'dist'),
-      publicPath: process.env.PUBLIC_PATH || '/',
+      publicPath: isProduction ? '/page/main/' : '/',
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.css'],
@@ -49,9 +48,6 @@ module.exports = (_, argv) => {
       ],
     },
     plugins: [
-      new Dotenv({
-        path: isProduction ? './.env.production' : './.env.development',
-      }),
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: './public/index.html',
@@ -59,8 +55,8 @@ module.exports = (_, argv) => {
       new ModuleFederationPlugin({
         name: 'main',
         remotes: {
-          auth: `auth@${process.env.REMOTE_AUTH_URL}/remoteEntry.js`,
-          deploy: `deploy@${process.env.REMOTE_DEPLOY_URL}/remoteEntry.js`,
+          auth: `auth@${isProduction ? 'http://34.47.117.26/page/auth' : 'http://localhost:3001'}/remoteEntry.js`,
+          deploy: `deploy@${isProduction ? 'http://34.47.117.26/page/deploy' : 'http://localhost:3002'}/remoteEntry.js`,
         },
         shared: ['react', 'react-dom', 'react-router-dom', 'axios'],
       }),
