@@ -57,6 +57,7 @@ module.exports = (_, argv) => {
         remotes: {
           auth: `auth@${isProduction ? 'http://34.47.117.26/page/auth' : 'http://localhost:3001'}/remoteEntry.js`,
           deploy: `deploy@${isProduction ? 'http://34.47.117.26/page/deploy' : 'http://localhost:3002'}/remoteEntry.js`,
+          myTicket: `myTicket@${isProduction ? 'http://34.47.117.26/page/myticket' : 'http://localhost:3008'}/remoteEntry.js`,
         },
         shared: ['react', 'react-dom', 'react-router-dom', 'axios'],
       }),
@@ -77,6 +78,14 @@ module.exports = (_, argv) => {
         },
         {
           context: ['/deploy'],
+          target: 'http://34.47.117.26',
+        },
+        {
+          context: ['/tickets'],
+          target: 'http://34.47.117.26',
+        },
+        {
+          context: ['/event'],
           target: 'http://34.47.117.26',
         },
       ],

@@ -16,3 +16,7 @@ declare module 'deploy/PlayDetailPage';
 declare module 'deploy/TemplatePage';
 declare module 'deploy/DeployConcertPage';
 declare module 'deploy/ServerMonitorPage';
+declare module 'deploy/PlayConfigurationPage'
+
+// MyTicket
+declare module 'myTicket/MyTicketPage';

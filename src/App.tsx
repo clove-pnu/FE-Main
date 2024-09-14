@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import AuthProviderWrapper from './remotes/AuthProviderWrapper';
-import MainLayout from './components/Layout/MainLayout';
+import MainLayout from './components/layouts/MainLayout';
 import PrivateRouteWrapper from './remotes/PrivateRouteWrapper';
 import LoginPageWrapper from './remotes/LoginPageWrapper';
 import SignupPageWrapper from './remotes/SignupPageWrapper';
@@ -10,6 +10,8 @@ import TemplatePageWrapper from './remotes/TemplatePageWrapper';
 import PlayDetailPageWrapper from './remotes/PlayDetailPageWrapper';
 import DeployConcertPageWrapper from './remotes/DeployConcertPageWrapper';
 import ServerMonitorPageWrapper from './remotes/ServerMonitorPageWrapper';
+import PlayConfigurationPageWrapper from './remotes/PlayConfigurationPageWrapper';
+import MyTicketPageWrapper from './remotes/MyTicketPageWrapper';
 
 export default function App() {
   return (
@@ -44,13 +46,10 @@ export default function App() {
               />
               {/* <Route path="/owner/playMonitor/:pid" element={<PlayMonitorPageWrapper />} /> */}
               <Route path="/owner/serverMonitor/:pid" element={<ServerMonitorPageWrapper />} />
-              {/* <Route
-                path="/owner/playConfiguration/:pid"
-                element={<PlayConfigurationPage />}
-              /> */}
+              <Route path="/owner/playConfiguration/:pid" element={<PlayConfigurationPageWrapper />} />
 
-              {/* Play Ticketing */}
-              {/* <Route path="/play/:pid/ticketing" element={<PlayTicketingPage />} /> */}
+              {/* My Ticket */}
+              <Route path="/myTicket" element={<MyTicketPageWrapper />} />
             </Route>
           </Route>
           {/* Authentication */}
