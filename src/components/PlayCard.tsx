@@ -3,28 +3,30 @@ import { Play } from '../utils/type';
 import styles from './styles/PlayCard.module.css';
 
 export default function PlayCard({
-  pid,
-  thumbnailUrl,
-  title,
-  location,
+  id,
+  image,
+  name,
+  venue,
   startDate,
   endDate,
 }: Play) {
   return (
-    <Link className={styles.link} to={`/play/${pid}`}>
+    <Link className={styles.link} to={`http://localhost:3007/page/play/${name}`}>
       <div className={styles.container}>
-        <div className={styles.imageContainer}>
-          <img src={thumbnailUrl} alt={`${title} 포스터`} />
-        </div>
+        <img
+          src={image}
+          alt={`${name} 포스터`}
+          className={styles.image}
+        />
         <div className={styles.contentContainer}>
-          <h3 className={styles.title}>{title}</h3>
-          <div>{location}</div>
+          <h3 className={styles.title}>{name}</h3>
+          <div>{venue}</div>
           <div className={styles.date}>
-            {startDate.toLocaleDateString()}
+            {startDate}
             {' '}
             ~
             {' '}
-            {endDate.toLocaleDateString()}
+            {endDate}
           </div>
         </div>
       </div>

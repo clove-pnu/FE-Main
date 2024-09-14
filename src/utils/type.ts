@@ -1,8 +1,8 @@
 export interface Play {
-  pid: number;
-  thumbnailUrl: string;
-  title: string;
-  location: string;
-  startDate: Date;
-  endDate: Date;
+  id: number;
+  name: string;
+  image: string;
+  venue: string;
+  startDate: string;
+  endDate: string;
 }

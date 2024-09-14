@@ -7,11 +7,11 @@
   flex-direction: column;
   color: black;
 }
-
-.imageContainer {
+.image {
   background-color: var(--color-blue);
   height: 20rem;
   width: 15rem;
+  object-fit: cover;
 }
 
 .contentContainer {

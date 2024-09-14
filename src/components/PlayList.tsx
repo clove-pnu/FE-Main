@@ -10,21 +10,21 @@ export default function PlayList({ PlayCards }: PlayListProps) {
   return (
     <ul className={styles.container}>
       {PlayCards.map(({
-        pid,
-        thumbnailUrl,
-        title,
-        location,
+        id,
+        image,
+        name,
+        venue,
         startDate,
         endDate,
       }) => (
         <li
-          key={pid}
+          key={id}
         >
           <PlayCard
-            pid={pid}
-            thumbnailUrl={thumbnailUrl}
-            title={title}
-            location={location}
+            id={id}
+            image={image}
+            name={name}
+            venue={venue}
             startDate={startDate}
             endDate={endDate}
           />
