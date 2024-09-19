@@ -16,7 +16,7 @@ import MyTicketPageWrapper from './remotes/MyTicketPageWrapper';
 export default function App() {
   return (
     <AuthProviderWrapper>
-      <BrowserRouter basename={process.env.NODE_ENV === 'production' ? '/page/main' : '/'}>
+      <BrowserRouter basename="/page/main">
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<MainPage />} />
@@ -41,12 +41,12 @@ export default function App() {
 
               {/* Play Detail (seller) */}
               <Route
-                path="/owner/playDetail/:pid"
+                path="/owner/playDetail/:playName"
                 element={<PlayDetailPageWrapper />}
               />
               {/* <Route path="/owner/playMonitor/:pid" element={<PlayMonitorPageWrapper />} /> */}
-              <Route path="/owner/serverMonitor/:pid" element={<ServerMonitorPageWrapper />} />
-              <Route path="/owner/playConfiguration/:pid" element={<PlayConfigurationPageWrapper />} />
+              <Route path="/owner/serverMonitor/:playName" element={<ServerMonitorPageWrapper />} />
+              <Route path="/owner/playConfiguration/:playName" element={<PlayConfigurationPageWrapper />} />
 
               {/* My Ticket */}
               <Route path="/myTicket" element={<MyTicketPageWrapper />} />

@@ -23,6 +23,7 @@ export default function MainPage() {
   return (
     <main>
       <div className={styles.container}>
+        <div className={styles.sectionTitle}>공연 목록</div>
         <PlayList PlayCards={playList} />
       </div>
     </main>

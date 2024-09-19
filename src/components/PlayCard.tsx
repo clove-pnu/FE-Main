@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { Play } from '../utils/type';
 import styles from './styles/PlayCard.module.css';
 
@@ -10,17 +11,36 @@ export default function PlayCard({
   startDate,
   endDate,
 }: Play) {
+  const [isHover, setIsHover] = useState<boolean>(false);
+
+  const handleMouseEnter = () => {
+    setIsHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHover(false);
+  };
+
   return (
-    <Link className={styles.link} to={`http://localhost:3007/page/play/${name}`}>
+    <Link
+      className={styles.link}
+      to={process.env.NODE_ENV === 'production'
+        ? `http://34.47.117.26/page/play/${name}`
+        : `http://localhost:3007/page/play/${name}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className={styles.container}>
-        <img
-          src={image}
-          alt={`${name} 포스터`}
-          className={styles.image}
-        />
+        <div className={styles.imageContainer}>
+          <img
+            src={image}
+            alt={`${name} 포스터`}
+            className={`${styles.image} ${isHover && styles.imageHovered}`}
+          />
+        </div>
         <div className={styles.contentContainer}>
           <h3 className={styles.title}>{name}</h3>
-          <div>{venue}</div>
+          <div className={styles.venue}>{venue}</div>
           <div className={styles.date}>
             {startDate}
             {' '}
