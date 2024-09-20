@@ -1,5 +1,16 @@
+/* All */
+
+/* Mobile */
+@media (width < 1024px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
 /* Desktop */
-@media (min-width: 1024px) {
+@media (width >= 1024px) {
   .container {
     display: flex;
     flex-direction: row;
@@ -8,14 +19,3 @@
     row-gap: 3rem;
   } 
 }
-
-/* Mobile */
-@media (max-width: 1023px) {
-  .container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-}
-
-/* All */

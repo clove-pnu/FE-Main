@@ -1,4 +1,3 @@
-import { mockData } from '../mocks/event';
 import { Play } from '../utils/type';
 import PlayCard from './PlayCard';
 import styles from './styles/PlayList.module.css';
