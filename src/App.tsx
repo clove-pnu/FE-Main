@@ -12,6 +12,7 @@ import DeployConcertPageWrapper from './remotes/DeployConcertPageWrapper';
 import ServerMonitorPageWrapper from './remotes/ServerMonitorPageWrapper';
 import PlayConfigurationPageWrapper from './remotes/PlayConfigurationPageWrapper';
 import MyTicketPageWrapper from './remotes/MyTicketPageWrapper';
+import PlayMonitorPageWrapper from './remotes/PlayMonitorPageWrapper';
 
 export default function App() {
   return (
@@ -44,7 +45,7 @@ export default function App() {
                 path="/owner/playDetail/:playName"
                 element={<PlayDetailPageWrapper />}
               />
-              {/* <Route path="/owner/playMonitor/:pid" element={<PlayMonitorPageWrapper />} /> */}
+              <Route path="/owner/playMonitor/:playName" element={<PlayMonitorPageWrapper />} />
               <Route path="/owner/serverMonitor/:playName" element={<ServerMonitorPageWrapper />} />
               <Route path="/owner/playConfiguration/:playName" element={<PlayConfigurationPageWrapper />} />
 

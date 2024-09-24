@@ -19,10 +19,6 @@ body, * {
   font-family: 'NotoSansKR', sans-serif;
 }
 
-* {
-  background: inherit;
-}
-
 #root {
   width: 100vw;
 }
