@@ -36,9 +36,7 @@ export default function App() {
               />
 
               {/* Deployment Template */}
-              <Route path="/owner/deploy/concert" element={<DeployConcertPageWrapper />} />
-              {/* <Route path="/owner/deploy/sports" element={<ConcertDeployPage />} />
-              <Route path="/owner/deploy/exhibition" element={<ConcertDeployPage />} /> */}
+              <Route path="/owner/deploy/:templateName" element={<DeployConcertPageWrapper />} />
 
               {/* Play Detail (seller) */}
               <Route
