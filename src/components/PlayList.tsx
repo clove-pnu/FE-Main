@@ -3,32 +3,24 @@ import PlayCard from './PlayCard';
 import styles from './styles/PlayList.module.css';
 
 interface PlayListProps {
-  PlayCards: Play[];
+  playCards: Play[];
 }
 
-export default function PlayList({ PlayCards }: PlayListProps) {
+export default function PlayList({ playCards }: PlayListProps) {
   return (
     <ul className={styles.container}>
-      {PlayCards.map(({
-        pid,
-        thumbnailUrl,
-        title,
-        location,
-        startDate,
-        endDate,
-      }) => (
-        <li
-          key={pid}
-        >
-          <PlayCard
-            pid={pid}
-            thumbnailUrl={thumbnailUrl}
-            title={title}
-            location={location}
-            startDate={startDate}
-            endDate={endDate}
-          />
-        </li>
+      {playCards.map((playCard) => playCard && (
+      <li key={playCard.namespace}>
+        <PlayCard
+          id={playCard.id}
+          image={playCard.image}
+          namespace={playCard.namespace}
+          name={playCard.name}
+          venue={playCard.venue}
+          startDate={playCard.startDate}
+          endDate={playCard.endDate}
+        />
+      </li>
       ))}
     </ul>
   );

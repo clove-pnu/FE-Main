@@ -1,13 +1,18 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import AuthProviderWrapper from './remotes/AuthProviderWrapper';
-import MainLayout from './components/Layout/MainLayout';
+import MainLayout from './components/layouts/MainLayout';
 import PrivateRouteWrapper from './remotes/PrivateRouteWrapper';
 import LoginPageWrapper from './remotes/LoginPageWrapper';
 import SignupPageWrapper from './remotes/SignupPageWrapper';
 import OwnerPageWrapper from './remotes/OwnerPageWrapper';
 import TemplatePageWrapper from './remotes/TemplatePageWrapper';
 import PlayDetailPageWrapper from './remotes/PlayDetailPageWrapper';
+import DeployConcertPageWrapper from './remotes/DeployConcertPageWrapper';
+import ServerMonitorPageWrapper from './remotes/ServerMonitorPageWrapper';
+import PlayConfigurationPageWrapper from './remotes/PlayConfigurationPageWrapper';
+import MyTicketPageWrapper from './remotes/MyTicketPageWrapper';
+import PlayMonitorPageWrapper from './remotes/PlayMonitorPageWrapper';
 
 export default function App() {
   return (
@@ -22,12 +27,6 @@ export default function App() {
             <Route element={<PrivateRouteWrapper />}>
               {/* Deployment */}
               <Route
-                path="/test"
-                element={(
-                  <div>This is Private Page!</div>
-                )}
-              />
-              <Route
                 path="/owner"
                 element={<OwnerPageWrapper />}
               />
@@ -37,21 +36,19 @@ export default function App() {
               />
 
               {/* Deployment Template */}
-              {/* <Route path="/owner/deploy/concert" element={<ConcertDeployPage />} />
-              <Route path="/owner/deploy/sports" element={<ConcertDeployPage />} />
-              <Route path="/owner/deploy/exhibition" element={<ConcertDeployPage />} /> */}
+              <Route path="/owner/deploy/:templateName" element={<DeployConcertPageWrapper />} />
 
               {/* Play Detail (seller) */}
               <Route
-                path="/owner/playDetail/:pid"
+                path="/owner/playDetail/:namespace"
                 element={<PlayDetailPageWrapper />}
               />
-              {/* <Route path="/owner/playMonitor/:pid" element={<PlayMonitorPage />} />
-              <Route path="/owner/serverMonitor/:pid" element={<ServerMonitorPage />} />
-              <Route path="/owner/playConfiguration/:pid" element={<PlayConfigurationPage />} /> */}
+              <Route path="/owner/playMonitor/:namespace" element={<PlayMonitorPageWrapper />} />
+              <Route path="/owner/serverMonitor/:namespace" element={<ServerMonitorPageWrapper />} />
+              <Route path="/owner/playConfiguration/:namespace" element={<PlayConfigurationPageWrapper />} />
 
-              {/* Play Ticketing */}
-              {/* <Route path="/play/:pid/ticketing" element={<PlayTicketingPage />} /> */}
+              {/* My Ticket */}
+              <Route path="/myTicket" element={<MyTicketPageWrapper />} />
             </Route>
           </Route>
           {/* Authentication */}
