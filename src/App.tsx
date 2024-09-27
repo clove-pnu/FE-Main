@@ -40,12 +40,12 @@ export default function App() {
 
               {/* Play Detail (seller) */}
               <Route
-                path="/owner/playDetail/:playName"
+                path="/owner/playDetail/:namespace"
                 element={<PlayDetailPageWrapper />}
               />
-              <Route path="/owner/playMonitor/:playName" element={<PlayMonitorPageWrapper />} />
-              <Route path="/owner/serverMonitor/:playName" element={<ServerMonitorPageWrapper />} />
-              <Route path="/owner/playConfiguration/:playName" element={<PlayConfigurationPageWrapper />} />
+              <Route path="/owner/playMonitor/:namespace" element={<PlayMonitorPageWrapper />} />
+              <Route path="/owner/serverMonitor/:namespace" element={<ServerMonitorPageWrapper />} />
+              <Route path="/owner/playConfiguration/:namespace" element={<PlayConfigurationPageWrapper />} />
 
               {/* My Ticket */}
               <Route path="/myTicket" element={<MyTicketPageWrapper />} />

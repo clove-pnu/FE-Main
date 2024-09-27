@@ -22,17 +22,6 @@ export default function PlayList({ playCards }: PlayListProps) {
         />
       </li>
       ))}
-      <li>
-        <PlayCard
-          id={0}
-          image=""
-          namespace="testnamespace"
-          name="test"
-          venue="test venue"
-          startDate="2024-01-01"
-          endDate="2024-01-02"
-        />
-      </li>
     </ul>
   );
 }
