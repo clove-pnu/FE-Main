@@ -22,12 +22,12 @@ export default function MainPage() {
 
   useEffect(() => {
     const fetch = async () => {
-      const getEventListResult = await Promise.all(namespaceList.map((namespace) => {
+      const getEventListResult = await Promise.all(namespaceList.map(async (namespace) => {
         let result = null;
 
-        fetchWithHandler(() => getEvent(namespace), {
+        await fetchWithHandler(() => getEvent(namespace), {
           onSuccess: (response) => {
-            result = { ...response.data, namespace };
+            result = { ...response.data[0], namespace };
           },
           onError: () => {},
         });
