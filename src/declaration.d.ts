@@ -9,6 +9,8 @@ declare module 'auth/SignupPage';
 declare module 'auth/AuthProvider';
 declare module 'auth/UserStatusBar';
 declare module 'auth/PrivateRoute';
+declare module 'auth/CustomerRoute';
+declare module 'auth/ProviderRoute';
 
 // Deploy
 declare module 'deploy/OwnerPage';

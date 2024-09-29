@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import AuthProviderWrapper from './remotes/AuthProviderWrapper';
 import MainLayout from './components/layouts/MainLayout';
-import PrivateRouteWrapper from './remotes/PrivateRouteWrapper';
 import LoginPageWrapper from './remotes/LoginPageWrapper';
 import SignupPageWrapper from './remotes/SignupPageWrapper';
 import OwnerPageWrapper from './remotes/OwnerPageWrapper';
@@ -13,6 +12,8 @@ import ServerMonitorPageWrapper from './remotes/ServerMonitorPageWrapper';
 import PlayConfigurationPageWrapper from './remotes/PlayConfigurationPageWrapper';
 import MyTicketPageWrapper from './remotes/MyTicketPageWrapper';
 import PlayMonitorPageWrapper from './remotes/PlayMonitorPageWrapper';
+import ProviderRouteWrapper from './remotes/ProviderRouteWrapper';
+import CustomerRouteWrapper from './remotes/CustomerRouteWrapper';
 
 export default function App() {
   return (
@@ -23,8 +24,8 @@ export default function App() {
             <Route path="/" element={<MainPage />} />
             {/* <Route path="/play/:pid" element={<PlayDetailTicketingPage />} /> */}
 
-            {/* Need Authentication */}
-            <Route element={<PrivateRouteWrapper />}>
+            {/* Need Provider Authentication */}
+            <Route element={<ProviderRouteWrapper />}>
               {/* Deployment */}
               <Route
                 path="/owner"
@@ -38,7 +39,7 @@ export default function App() {
               {/* Deployment Template */}
               <Route path="/owner/deploy/:templateName" element={<DeployConcertPageWrapper />} />
 
-              {/* Play Detail (seller) */}
+              {/* Play Detail */}
               <Route
                 path="/owner/playDetail/:namespace"
                 element={<PlayDetailPageWrapper />}
@@ -46,7 +47,10 @@ export default function App() {
               <Route path="/owner/playMonitor/:namespace" element={<PlayMonitorPageWrapper />} />
               <Route path="/owner/serverMonitor/:namespace" element={<ServerMonitorPageWrapper />} />
               <Route path="/owner/playConfiguration/:namespace" element={<PlayConfigurationPageWrapper />} />
+            </Route>
 
+            {/* Need Customer Authentication */}
+            <Route element={<CustomerRouteWrapper />}>
               {/* My Ticket */}
               <Route path="/myTicket" element={<MyTicketPageWrapper />} />
             </Route>
