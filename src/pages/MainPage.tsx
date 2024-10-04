@@ -4,10 +4,13 @@ import { Play } from '../utils/type';
 import styles from './styles/MainPage.module.css';
 import { fetchWithHandler } from '../utils/fetchWithHandler';
 import { getEvent, getNamespaceList } from '../apis/event';
+import useTitle from '../hooks/useTitle';
 
 export default function MainPage() {
   const [namespaceList, setNamespaceList] = useState<string[]>([]);
   const [playList, setPlayList] = useState<Play[]>([]);
+
+  useTitle('Clove 티켓');
 
   useEffect(() => {
     fetchWithHandler(() => getNamespaceList(), {

@@ -27,7 +27,7 @@ export default function PlayCard({
       className={styles.link}
       to={process.env.NODE_ENV === 'production'
         ? `http://cse.ticketclove.com/${namespace}/page/play`
-        : `http://localhost:3007/${namespace}/page/play`}
+        : `http://localhost:3004/${namespace}/page/play`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

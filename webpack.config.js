@@ -74,7 +74,7 @@ module.exports = (_, argv) => {
       historyApiFallback: true,
       proxy: [
         {
-          context: ['/auth', '/deploy', '/ticket', '/event', '/monitor', '/template', '/default/event', '/default/ticket', '/default/seat', '/test/event', '/rose2/event'],
+          context: ['/auth', '/deploy', '/ticket', '/event', '/monitor', '/template', '/default/event', '/default/ticket', '/default/seat', '/rose/event', '/pino/event'],
           target: serverURL,
         },
         // {
